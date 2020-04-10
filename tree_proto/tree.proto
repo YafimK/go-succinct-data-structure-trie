@@ -1,0 +1,11 @@
+syntax = "proto3";
+package tree_proto;
+option go_package = "github.com/YafimK/go-succinct-data-structure-trie/tree_proto";
+
+message TreeEntry {
+    string AllowedChars = 1;
+    string WordListName = 2;
+    string Tree = 3;
+    string Rank = 4;
+    uint64 NodeCount = 5;
+}

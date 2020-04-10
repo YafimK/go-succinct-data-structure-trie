@@ -1,4 +1,4 @@
-package bits
+package succinct_tree
 
 /**
   Given a string of data (eg, in BASE-64), the BitString class supports

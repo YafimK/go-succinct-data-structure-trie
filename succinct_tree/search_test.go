@@ -1,8 +1,8 @@
-package bits
+package succinct_tree
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 func TestSearch(t *testing.T) {

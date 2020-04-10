@@ -1,4 +1,4 @@
-package bits
+package succinct_tree
 
 import "unicode/utf8"
 
@@ -12,6 +12,14 @@ type FrozenTrieNode struct {
 	final      bool
 	firstChild uint
 	childCount uint
+}
+
+func (f *FrozenTrieNode) Letter() string {
+	return f.letter
+}
+
+func (f *FrozenTrieNode) Final() bool {
+	return f.final
 }
 
 /**

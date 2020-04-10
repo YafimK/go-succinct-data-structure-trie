@@ -1,4 +1,4 @@
-package bits
+package succinct_tree
 
 /**
  * Set alphabet of words

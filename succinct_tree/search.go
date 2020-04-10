@@ -1,4 +1,4 @@
-package bits
+package succinct_tree
 
 /**
  * Given a word, returns array of words, prefix of which is word

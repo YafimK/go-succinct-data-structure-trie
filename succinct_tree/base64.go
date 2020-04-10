@@ -1,4 +1,4 @@
-package bits
+package succinct_tree
 
 // Configure the bit writing and reading functions to work natively in BASE-64
 // encoding. That way, we don't have to convert back and forth to bytes.

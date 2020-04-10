@@ -1,6 +1,6 @@
 // Package go-succinct-data-structure-trie implements trie with succinct data
 // structure in Go.
-package bits
+package succinct_tree
 
 import "unicode/utf8"
 
