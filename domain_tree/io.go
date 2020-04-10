@@ -96,13 +96,9 @@ func WriteNewDomainTree(allowedChars, name, sourceFile, outputPath string) {
 	}
 }
 
-func LoadTree(sourceFile string) (*succinct_tree.FrozenTrie, error) {
-	data, err := ioutil.ReadFile(sourceFile)
-	if err != nil {
-		panic(err)
-	}
+func LoadTree(sourceFile []byte) (*succinct_tree.FrozenTrie, error) {
 	treeEntry := &tree_proto.TreeEntry{}
-	err = proto.Unmarshal(data, treeEntry)
+	err := proto.Unmarshal(sourceFile, treeEntry)
 	if err != nil {
 		return nil, fmt.Errorf("tree unmarshaling error: %w", err)
 	}

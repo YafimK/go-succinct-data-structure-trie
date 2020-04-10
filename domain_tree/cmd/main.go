@@ -34,7 +34,7 @@ func main() {
 		fmt.Println("source file:", fileMode.Arg(0))
 		fmt.Println("output file:", fileMode.Arg(1))
 		sourcePath = append(sourcePath, fileMode.Arg(0))
-		outputPath = append(outputPath, dirMode.Arg(1))
+		outputPath = append(outputPath, filepath.Join(fileMode.Arg(1)+".tree"))
 	case "dir":
 		if err := dirMode.Parse(os.Args[2:]); err != nil {
 			log.Fatalf(err.Error())
@@ -54,7 +54,7 @@ func main() {
 				continue
 			}
 			sourcePath = append(sourcePath, filepath.Join(sourceDir, f.Name()))
-			outputPath = append(outputPath, filepath.Join(outputDir, f.Name(), ".tree"))
+			outputPath = append(outputPath, filepath.Join(outputDir, f.Name()+".tree"))
 		}
 
 	default:
@@ -65,7 +65,15 @@ func main() {
 		log.Fatalf("oh oh - sourcepaths are smaller then outputpath")
 	}
 	for i, sourceFile := range sourcePath {
-		domain_tree.WriteNewDomainTree(allowedChars, path.Base(sourceFile), sourceFile, outputPath[i])
+		absSourceFilePath, err := filepath.Abs(sourceFile)
+		if err != nil {
+			log.Fatalf("failed abosulting a path %q: %v", sourceFile, err)
+		}
+		absOutputFilePath, err := filepath.Abs(outputPath[i])
+		if err != nil {
+			log.Fatalf("failed abosulting a path %q: %v", outputPath[i], err)
+		}
+		domain_tree.WriteNewDomainTree(allowedChars, path.Base(sourceFile), absSourceFilePath, absOutputFilePath)
 	}
 
 }

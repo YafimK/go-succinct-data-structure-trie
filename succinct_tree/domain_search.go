@@ -6,9 +6,9 @@ import (
 
 /**
   Look-up a word suffix in the trie. Returns true if and only if the suffix exists
-  in the trie as full word and the cursor world
+  in the trie as full word and the cursor would hit a suffix separator segmentation mark
 */
-func (f *FrozenTrie) LookupSuffix(word string) bool {
+func (f *FrozenTrie) LookupDomainSuffix(word string) bool {
 	node := f.GetRoot()
 	for i, w := 0, 0; i < len(word); i += w {
 		runeValue, width := utf8.DecodeRuneInString(word[i:])

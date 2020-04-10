@@ -1,8 +1,4 @@
-# cannot use relative path in GOROOT, otherwise 6g not found. For example,
-#   export GOROOT=../go  (=> 6g not found)
-# it is also not allowed to use relative path in GOPATH
-export GOROOT=$(realpath ../go)
-export PATH := $(GOROOT)/bin:$(GOPATH)/bin:$(PATH)
+#export PATH:=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/go/bin
 
 
 test:
@@ -17,6 +13,9 @@ fmt:
 
 help:
 	@go help
+
+build:
+	go build -o ./bin/writer ./domain_tree/cmd/
 
 protoc:
 	@rm -f proto/tree.pb.go
